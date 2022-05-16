@@ -1,8 +1,6 @@
 pipeline {
 	agent { label 'slave'}
-  triggers {
-    pollSCM '* * * * *'
-  }
+ 
 //   stages {
 //     stage('SonarQube Analysis') {
 //       steps {
@@ -49,7 +47,7 @@ pipeline {
 //           '''
 //      }    
 //     }
-}
+// }
 post {
     failure {
         mail to: 'unsolveddevops@gmail.com',
