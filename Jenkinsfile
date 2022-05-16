@@ -48,18 +48,18 @@ pipeline {
 //      }    
 //     }
 // }
-post {
-    failure {
-        mail to: 'unsolveddevops@gmail.com',
-             subject: "Failed Pipeline: ${BUILD_NUMBER}",
-             body: "Something is wrong with ${env.BUILD_URL}"
-    }
-     success {
-        mail to: 'unsolveddevops@gmail.com',
-             subject: "successful Pipeline:  ${env.BUILD_NUMBER}",
-             body: "Your pipeline is success ${env.BUILD_URL}"
-    }
-}
+// post {
+//     failure {
+//         mail to: 'unsolveddevops@gmail.com',
+//              subject: "Failed Pipeline: ${BUILD_NUMBER}",
+//              body: "Something is wrong with ${env.BUILD_URL}"
+//     }
+//      success {
+//         mail to: 'unsolveddevops@gmail.com',
+//              subject: "successful Pipeline:  ${env.BUILD_NUMBER}",
+//              body: "Your pipeline is success ${env.BUILD_URL}"
+//     }
+// }
 	  
   }	  
 
