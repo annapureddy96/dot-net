@@ -3,27 +3,27 @@ pipeline {
   triggers {
     pollSCM '* * * * *'
   }
-  stages {
-    stage('SonarQube Analysis') {
-      steps {
-        sh '''
-	 whoami
-	 export PATH=${PATH}:${HOME}/.dotnet/tools
-	 echo $PATH
-         echo Restore started on `date`.
-         dotnet sonarscanner begin /k:"sample" /d:sonar.host.url=$sonar_url /d:sonar.login=f421828215c725418e124db50947d0b18afc4171
-         dotnet restore panz.csproj
-         dotnet build panz.csproj -c Release
-         dotnet sonarscanner end /d:sonar.login=f421828215c725418e124db50947d0b18afc4171
+//   stages {
+//     stage('SonarQube Analysis') {
+//       steps {
+//         sh '''
+// 	 whoami
+// 	 export PATH=${PATH}:${HOME}/.dotnet/tools
+// 	 echo $PATH
+//          echo Restore started on `date`.
+//          dotnet sonarscanner begin /k:"sample" /d:sonar.host.url=$sonar_url /d:sonar.login=f421828215c725418e124db50947d0b18afc4171
+//          dotnet restore panz.csproj
+//          dotnet build panz.csproj -c Release
+//          dotnet sonarscanner end /d:sonar.login=f421828215c725418e124db50947d0b18afc4171
         
-        '''
-      }
-    }
-    stage('Dotnet Publish') {
-      steps {
-        sh 'dotnet publish panz.csproj -c Release'
-      }   
-    }
+//         '''
+//       }
+//    }
+//    stage('Dotnet Publish') {
+//      steps {
+//        sh 'dotnet publish panz.csproj -c Release'
+//      }   
+//    }
    stage('Docker build and push') {
       steps {
         sh '''
