@@ -1,7 +1,7 @@
 pipeline {
 	agent { label 'slave'}
  
-//   stages {
+  stages {
 //     stage('SonarQube Analysis') {
 //       steps {
 //         sh '''
@@ -60,5 +60,7 @@ post {
              body: "Your pipeline is success ${env.BUILD_URL}"
     }
 }
+	  
+  }	  
 
 }
