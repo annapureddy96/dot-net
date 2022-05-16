@@ -33,22 +33,22 @@ pipeline {
 //          aws configure set aws_secret_access_key $secret_key
          aws configure set default.region ap-south-1
          DOCKER_LOGIN_PASSWORD=$(aws ecr get-login-password  --region ap-south-1)
-         docker login -u AWS -p $DOCKER_LOGIN_PASSWORD https://971076122335.dkr.ecr.ap-south-1.amazonaws.com
-         docker build -t 971076122335.dkr.ecr.ap-south-1.amazonaws.com/sample:SAMPLE-PROJECT-${BUILD_NUMBER} .
-         docker push 971076122335.dkr.ecr.ap-south-1.amazonaws.com/sample:SAMPLE-PROJECT-${BUILD_NUMBER}
+         docker login -u AWS -p $DOCKER_LOGIN_PASSWORD https://583192906263.dkr.ecr.ap-south-1.amazonaws.com
+         docker build -t 583192906263.dkr.ecr.ap-south-1.amazonaws.com/demo:SAMPLE-PROJECT-${BUILD_NUMBER} .
+         docker push 583192906263.dkr.ecr.ap-south-1.amazonaws.com/demo:SAMPLE-PROJECT-${BUILD_NUMBER}
           
 	  '''
      }   
    }
-    stage('ecs deploy') {
-      steps {
-        sh '''
-          chmod +x changebuildnumber.sh
-          ./changebuildnumber.sh $BUILD_NUMBER
-	  sh -x ecs-auto.sh
-          '''
-     }    
-    }
+//     stage('ecs deploy') {
+//       steps {
+//         sh '''
+//           chmod +x changebuildnumber.sh
+//           ./changebuildnumber.sh $BUILD_NUMBER
+// 	  sh -x ecs-auto.sh
+//           '''
+//      }    
+//     }
 }
 post {
     failure {
