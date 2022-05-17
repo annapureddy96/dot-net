@@ -45,9 +45,8 @@ pipeline {
 	   export AWS_SECRET_ACCESS_KEY=$secret_key
 	   export AWS_ACCESS_KEY_ID=ap-south-1
 	   aws eks --region ap-south-1 update-kubeconfig --name demo
-	   cat /home/ubuntu/deploy.yml
-	   kubectl apply -f /home/ubuntu/deploy.yml
-	   kubectl apply -f /home/ubuntu/service.yml
+	   kubectl apply -f deploy.yml
+	   kubectl apply -f service.yml
 	   kubectl get pods
 //	    chmod +x changebuildnumber.sh
 //           ./changebuildnumber.sh $BUILD_NUMBER
