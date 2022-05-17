@@ -38,15 +38,23 @@ pipeline {
 	  '''
      }   
    }
-//     stage('ecs deploy') {
-//       steps {
-//         sh '''
-//           chmod +x changebuildnumber.sh
+    stage('eks deploy') {
+       steps {
+         sh '''
+           export AWS_ACCESS_KEY_ID=$access_key
+	   export AWS_SECRET_ACCESS_KEY=$secret_key
+	   export AWS_ACCESS_KEY_ID=ap-south-1
+	   aws eks --region ap-south-1 update-kubeconfig --name demo
+	   cat /home/ubuntu/deploy.yml
+	   kubectl apply -f /home/ubuntu/deploy.yml
+	   kubectl apply -f /home/ubuntu/service.yml
+	   kubectl get pods
+//	    chmod +x changebuildnumber.sh
 //           ./changebuildnumber.sh $BUILD_NUMBER
 // 	  sh -x ecs-auto.sh
-//           '''
-//      }    
-//     }
+           '''
+      }    
+     }
 // }
 // post {
 //     failure {
