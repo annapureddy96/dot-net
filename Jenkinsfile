@@ -44,7 +44,7 @@ pipeline {
            export AWS_ACCESS_KEY_ID=$access_key
 	   export AWS_SECRET_ACCESS_KEY=$secret_key
 	   export AWS_ACCESS_KEY_ID=ap-south-1
-	   aws eks --region ap-south-1 update-kubeconfig --name demo
+	   aws eks update-kubeconfig --name demo --region ap-south-1
 	   kubectl apply -f deploy.yml
 	   kubectl apply -f service.yml
 	   kubectl get pods
